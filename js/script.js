@@ -45,18 +45,18 @@ for (let propriedade in livros){ // para cada propriedade em meu objeto:
     botao.setAttribute("type", "submit")
     botao.textContent = "Já li"
     botao.classList.add("botao-lido")
-    
+
+    // TOGGLE
     botao.addEventListener("click", function(){
-          tituloLivro.classList.add("livro__titulo--lido") // quando clica no meu botão, adiciono classe
-    })
+        if (tituloLivro.classList.contains("livro__titulo--lido")){
+            tituloLivro.classList.remove("livro__titulo--lido")
+            botao.classList.remove("botao-nao-lido")
+            botao.textContent = "Já li"
 
-    const botaoDesfazer = document.createElement("button")
-    li.appendChild(botaoDesfazer)
-    botaoDesfazer.setAttribute("type", "submit")
-    botaoDesfazer.textContent = "Desfazer"
-    botaoDesfazer.classList.add("botao-desfazer")
-
-    botaoDesfazer.addEventListener("click", function(){
-        tituloLivro.classList.remove("livro__titulo--lido") // quando clico em 'desfazer', removo classe
-    })
+        } else {
+            tituloLivro.classList.add("livro__titulo--lido")
+            botao.classList.add("botao-nao-lido")
+            botao.textContent = "Desfazer"
+        }
+})
 }
